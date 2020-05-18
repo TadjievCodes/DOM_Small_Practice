@@ -10,6 +10,9 @@ const addItemInput = document.querySelector('input.addItemInput');
 const addItemButton = document.querySelector('.addItemButton');
 //const removeItemButton = document.querySelector('.removeItemButton');
 
+// To select the children elements of it
+const lis = listUl.children;
+
 
 //const listItems = document.getElementsByTagName('li'); //[0] If we wanted target only the first element 'li'[0] would be sufficient like I did at first
 // Now I wanna create a For Loop so that we actually target all the li items
@@ -17,6 +20,35 @@ const addItemButton = document.querySelector('.addItemButton');
 // Here I'm accessing each item of the listItems through looping n not repeat I made it equal to a variable listItem
 //  let listItem = listItems[index];
 //event.target.textContent = event.target.textContent.toUpperCase();
+
+
+
+function attachListItemButtons(li) {
+
+    let up = document.createElement('button');
+    up.className = "up";
+    up.textContent = "Up";
+    li.appendChild(up);
+
+    let down = document.createElement('button');
+    down.className = "down";
+    down.textContent = "Down";
+    li.appendChild(down);
+
+    let remove = document.createElement('button');
+    remove.className = "remove";
+    remove.textContent = "Remove";
+    li.appendChild(remove);
+
+}
+
+// Looping through elements to attach the buttons
+for (let i = 0; i < lis.length; i += 1) {
+
+    attachListItemButtons(lis[i]);
+
+}
+
 
 
 // We're creating a callback function here via the arrow function
@@ -104,6 +136,10 @@ addItemButton.addEventListener('click', () => {
     let ul = document.getElementsByTagName('ul')[0];
     let li = document.createElement('li');
     li.textContent = addItemInput.value;
+
+    //calling the function to generate or add the Dynamic generated buttons
+    attachListItemButtons(li);
+
     ul.appendChild(li);
     //The bug was on line 35 as we add the item to unordered list through .appendChild and we should mention li as the
     //variable was li and always insert variables targeted without quotes "" '' as it would cause an error
