@@ -28,7 +28,7 @@ lastListItem.style.backgroundColor = "lightsteelblue";
 //event.target.textContent = event.target.textContent.toUpperCase();
 
 
-
+//main function fot attaching buttons
 function attachListItemButtons(li) {
 
 
