@@ -9,6 +9,7 @@ The Event Object like: Event.target example: (And value LI any tagname should be
 ```js
 event.target.tagName == 'LI' 
 ```
+Another Example where we make it equal to the INPUT
 ```js
 let section = document.getElementsByTagName('section')[0];
 
