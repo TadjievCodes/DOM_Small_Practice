@@ -4,27 +4,53 @@ const listDiv = document.querySelector(".list");
 const descriptionInput = document.querySelector('input.description');
 const descriptionP = document.querySelector('p.description');
 const descriptionButton = document.querySelector('button.description');
+const listUl = listDiv.querySelector('ul');
+
 const addItemInput = document.querySelector('input.addItemInput');
 const addItemButton = document.querySelector('.addItemButton');
-const removeItemButton = document.querySelector('.removeItemButton');
-const listItems = document.getElementsByTagName('li'); //[0] If we wanted target only the first element 'li'[0] would be sufficient like I did at first
+//const removeItemButton = document.querySelector('.removeItemButton');
 
 
+//const listItems = document.getElementsByTagName('li'); //[0] If we wanted target only the first element 'li'[0] would be sufficient like I did at first
 // Now I wanna create a For Loop so that we actually target all the li items
-for (let index = 0; index < listItems.length; index += 1) {
-    // Here I'm accessing each item of the listItems through looping n not repeat I made it equal to a variable listItem
-    let listItem = listItems[index];
-    // We're creating a callback function here via the arrow function
-    listItem.addEventListener('mouseover', () => {
-        listItem.textContent = listItem.textContent.toUpperCase();
-    });
+//for (let index = 0; index < listItems.length; index += 1) {
+// Here I'm accessing each item of the listItems through looping n not repeat I made it equal to a variable listItem
+//  let listItem = listItems[index];
 
-    // Here we're creating a callback function for the opposite purpose on mouseout to return to lowercase letters
-    listItem.addEventListener('mouseout', () => {
-        listItem.textContent = listItem.textContent.toLowerCase();
-    });
 
-} // loop closing bracket
+
+// We're creating a callback function here via the arrow function
+listUl.addEventListener('click', (event) => {
+
+    if (event.target.tagName == 'BUTTON') {
+        let li = event.target.parentNode;
+        let ul = li.parentNode;
+        ul.removeChild(li);
+        //event.target.textContent = event.target.textContent.toUpperCase();
+    }
+});
+
+// Here we're creating a callback function for the opposite purpose on mouseout to return to lowercase letters
+
+
+/*
+listDiv.addEventListener('mouseout', (event) => {
+
+    if (event.target.tagName == 'LI') {
+        event.target.textContent = event.target.textContent.toLowerCase();
+    }
+});
+*/
+
+
+/* Example handler to test the code
+document.addEventListener('click', (event) => {
+
+    console.log(event.target);
+});
+*/
+
+//} // loop closing bracket
 
 
 
@@ -59,9 +85,10 @@ addItemButton.addEventListener('click', () => {
 
 
 
-
+/*
 removeItemButton.addEventListener('click', () => {
     let ul = document.getElementsByTagName('ul')[0];
     let li = document.querySelector('li:last-child');
     ul.removeChild(li);
 });
+*/
