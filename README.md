@@ -1,4 +1,4 @@
-# DOM_Small_Practice
+### DOM_Small_Practice ### 
 DOM_Small_Practice
 
 An event received by an element doesn't stop with that one element. That event moves to other elements like the parent, 
@@ -71,5 +71,6 @@ listUl.addEventListener('click', (event) => {
 
     } //outer main if closing tag
 }); // end of the function with an addEventListener
-
 ```
+### What is DOM Traversal? ### 
+Selecting an element based on its relationship to another element within the DOM
