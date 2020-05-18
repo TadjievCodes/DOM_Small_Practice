@@ -1,5 +1,4 @@
 ### DOM_Small_Practice ### 
-DOM_Small_Practice
 
 An event received by an element doesn't stop with that one element. That event moves to other elements like the parent, 
 and other ancestors of the element. This is called "event bubbling".
@@ -74,3 +73,66 @@ listUl.addEventListener('click', (event) => {
 ```
 ### What is DOM Traversal? ### 
 Selecting an element based on its relationship to another element within the DOM
+
+### Using nextElementSibling ### 
+```js
+// another if for down statement
+        if (event.target.className === "down") {
+            let li = event.target.parentNode;
+            let nextLi = li.nextElementSibling;
+            let ul = li.parentNode;
+
+            if (nextLi) {
+                // and then we'll call insertbefore passing in the list item to move and previous item reference
+                ul.insertBefore(nextLi, li);
+            }
+        } // inside if
+```
+OR another example:
+```js
+var list = document.getElementsByTagName('ul')[0];
+
+list.addEventListener('click', function(e) {
+  if (e.target.tagName == 'BUTTON') {
+    e.target.previousElementSibling.className = 'highlight';
+  }
+});
+```
+### Getting All Children of a Node with children ###
+```js
+function attachListItemButtons(li) {
+
+    let up = document.createElement('button');
+    up.className = "up";
+    up.textContent = "Up";
+    li.appendChild(up);
+
+    let down = document.createElement('button');
+    down.className = "down";
+    down.textContent = "Down";
+    li.appendChild(down);
+
+    let remove = document.createElement('button');
+    remove.className = "remove";
+    remove.textContent = "Remove";
+    li.appendChild(remove);
+
+}
+
+// Looping through elements to attach the buttons
+for (let i = 0; i < lis.length; i += 1) {
+    attachListItemButtons(lis[i]);
+}
+```
+### firstElementChild to get the first child element of a selected element, and lastElementChild, to get the last element ###
+```js
+const firstListItem = listUl.firstElementChild;
+const lastListItem = listUl.lastElementChild;
+
+firstListItem.style.backgroundColor = "lightskyblue";
+lastListItem.style.backgroundColor = "lightsteelblue";
+```
+
+
+
+
