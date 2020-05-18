@@ -132,6 +132,11 @@ const lastListItem = listUl.lastElementChild;
 firstListItem.style.backgroundColor = "lightskyblue";
 lastListItem.style.backgroundColor = "lightsteelblue";
 ```
+// So another technique that I like even better (and not possible with CSS) is to disable the unusable buttons but leave them visible with .disabled...
+```js
+document.querySelector(".list li:first-child button.up").disabled = true;
+document.querySelector(".list li:last-child button.down").disabled = true;
+```
 
 
 
