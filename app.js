@@ -16,23 +16,50 @@ const addItemButton = document.querySelector('.addItemButton');
 //for (let index = 0; index < listItems.length; index += 1) {
 // Here I'm accessing each item of the listItems through looping n not repeat I made it equal to a variable listItem
 //  let listItem = listItems[index];
-
+//event.target.textContent = event.target.textContent.toUpperCase();
 
 
 // We're creating a callback function here via the arrow function
 listUl.addEventListener('click', (event) => {
 
-    if (event.target.tagName == 'BUTTON') {
-        let li = event.target.parentNode;
-        let ul = li.parentNode;
-        ul.removeChild(li);
-        //event.target.textContent = event.target.textContent.toUpperCase();
-    }
-});
+    if (event.target.tagName === 'BUTTON') {
+        //nested another if
+        if (event.target.className === "remove") {
+            let li = event.target.parentNode;
+            let ul = li.parentNode;
+            ul.removeChild(li);
+        } // inside if
+
+        // another if for up statement
+        if (event.target.className === "up") {
+            let li = event.target.parentNode;
+            let prevLi = li.previousElementSibling;
+            let ul = li.parentNode;
+
+            if (prevLi) {
+                // and then we'll call insertbefore passing in the list item to move and previous item reference
+                ul.insertBefore(li, prevLi);
+            }
+        } // inside if
+
+        // another if for down statement
+        if (event.target.className === "down") {
+            let li = event.target.parentNode;
+            let nextLi = li.nextElementSibling;
+            let ul = li.parentNode;
+
+            if (nextLi) {
+                // and then we'll call insertbefore passing in the list item to move and previous item reference
+                ul.insertBefore(nextLi, li);
+            }
+        } // inside if
+
+
+    } //outer main if closing tag
+}); // end of the function with an addEventListener
+
 
 // Here we're creating a callback function for the opposite purpose on mouseout to return to lowercase letters
-
-
 /*
 listDiv.addEventListener('mouseout', (event) => {
 
@@ -84,7 +111,7 @@ addItemButton.addEventListener('click', () => {
 });
 
 
-
+// to remove the item just uncommented here as trying new things and exercises
 /*
 removeItemButton.addEventListener('click', () => {
     let ul = document.getElementsByTagName('ul')[0];
