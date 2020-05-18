@@ -41,6 +41,35 @@ There will be cases where you will need to traverse up the DOM tree, to get to a
 event.target.parentNode.parentNode.parentNode [...] // Continue until desired element has been reached
 ```
 Using previousElementSibling and insertBefore
+The old pne is previousSibling which returns even the empty spaces "" in HTML.
+The newer version previousElementSibling is better as it returns only the HTML elements without empty spaces.
+How many nodes are needed to perform the insertBefore method?
+You need the parent, the sibling and the reference to the node you want to insert.
+Example:
 ```js
+listUl.addEventListener('click', (event) => {
+
+    if (event.target.tagName === 'BUTTON') {
+        //nested another if
+        if (event.target.className === "remove") {
+            let li = event.target.parentNode;
+            let ul = li.parentNode;
+            ul.removeChild(li);
+        } // inside if
+
+        // another if for up statement
+        if (event.target.className === "up") {
+            let li = event.target.parentNode;
+            let prevLi = li.previousElementSibling;
+            let ul = li.parentNode;
+
+            if (prevLi) {
+                // and then we'll call insertbefore passing in the list item to move and previous item reference
+                ul.insertBefore(li, prevLi);
+            }
+        } // inside if
+
+    } //outer main if closing tag
+}); // end of the function with an addEventListener
 
 ```
