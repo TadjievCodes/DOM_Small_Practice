@@ -19,3 +19,13 @@ section.addEventListener('click', (e) => {
   }
 }); 
 ```
+OR we can use Traversing the DOM with parentNode and removeChild in the next example 
+```js
+listDiv.addEventListener('mouseover', (event) => {
+    if (event.target.tagName == 'LI') {
+        let li = event.target;
+        let ul = li.parentNode;
+        ul.removeChild(li);
+    }
+});
+```
