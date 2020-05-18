@@ -13,6 +13,12 @@ const addItemButton = document.querySelector('.addItemButton');
 // To select the children elements of it
 const lis = listUl.children;
 
+const firstListItem = listUl.firstElementChild;
+const lastListItem = listUl.lastElementChild;
+
+firstListItem.style.backgroundColor = "lightskyblue";
+lastListItem.style.backgroundColor = "lightsteelblue";
+
 
 //const listItems = document.getElementsByTagName('li'); //[0] If we wanted target only the first element 'li'[0] would be sufficient like I did at first
 // Now I wanna create a For Loop so that we actually target all the li items
@@ -24,6 +30,7 @@ const lis = listUl.children;
 
 
 function attachListItemButtons(li) {
+
 
     let up = document.createElement('button');
     up.className = "up";
@@ -48,6 +55,18 @@ for (let i = 0; i < lis.length; i += 1) {
     attachListItemButtons(lis[i]);
 
 }
+
+/* It could be done with this CSS line to hide the unused up and down buttons
+.list li:first-child button.up, .list li:last-child button.down {
+    visibility: hidden;
+}
+*/
+// but I tried to hide it with JS code
+
+// So another technique that I like even better (and not possible with CSS) is to disable the unusable buttons but leave them visible...
+document.querySelector(".list li:first-child button.up").disabled = true;
+document.querySelector(".list li:last-child button.down").disabled = true;
+
 
 
 
